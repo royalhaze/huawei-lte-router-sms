@@ -4,13 +4,14 @@
  * Date: 10/4/23
  * Time: 12:56 AM
  **/
+require 'vendor/autoload.php';
+
 
 $text = 'TEXT';
 $number = 'NUM';
 $password = 'password';
 $router_ip = '192.168.1.1';
 
-require 'vendor/autoload.php';
 
 $driver = \Facebook\WebDriver\Remote\RemoteWebDriver::create('http://127.0.0.1:4444', [
     'platform' => 'ANY',
@@ -47,7 +48,9 @@ $driver->findElement(\Facebook\WebDriver\WebDriverBy::id('sms_send_user_input'))
 $driver->findElement(\Facebook\WebDriver\WebDriverBy::id('sms_current_content'))->sendKeys($text);
 
 $driver->findElement(\Facebook\WebDriver\WebDriverBy::cssSelector('div[class="sms_send_normal"][onclick*="EMUI.smsSendAndSaveController.sendMessage()"]'))->click();
+
 $driver->wait(30)->until(
     \Facebook\WebDriver\WebDriverExpectedCondition::invisibilityOfElementLocated(\Facebook\WebDriver\WebDriverBy::id('submit_light'))
 );
+
 $driver->quit();
