@@ -1,9 +1,5 @@
 <?php
-/**
- * GitHub: RoyalHaze
- * Date: 10/4/23
- * Time: 12:56 AM
- **/
+
 require 'vendor/autoload.php';
 
 
